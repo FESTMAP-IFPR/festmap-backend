@@ -11,7 +11,7 @@ export class User {
     @Prop({ unique:[true, 'Duplicate email entered']  })
     email : string;
 
-    @Prop({ required: true })
+    @Prop()
     password : string;
 }
 
