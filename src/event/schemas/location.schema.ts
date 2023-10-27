@@ -6,8 +6,8 @@ import { Document } from 'mongoose';
     timestamps: true
 })
 export class Location extends Document  {
-        @Prop({ required: true })
+        @Prop({ required: false })
         type: string;
-        @Prop()
+        @Prop({ required: false })
         coordinates: number[] | [[Number]];
     }

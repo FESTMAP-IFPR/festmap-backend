@@ -4,15 +4,18 @@ import { Type } from "class-transformer";
 
 export class EventDto {
     @IsNotEmpty()
-    name: string;
+    nome: string;
     @IsNotEmpty()
-    description: string;
+    descricao: string;
     @IsNotEmpty()
     @IsDate()
     @Type(() => Date)
-    date: Date;
+    data_hora_inicio : Date;
+    @IsDate()
+    @Type(() => Date)
+    data_hora_fim : Date;
     @IsObject()
     @ValidateNested()
     @Type(() => LocationDto)
-    location: LocationDto;
+    localizacao: LocationDto;
 }

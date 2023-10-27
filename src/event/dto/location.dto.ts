@@ -1,8 +1,8 @@
 import { IsNotEmpty } from "class-validator";
 
 export class LocationDto {
-    @IsNotEmpty()
+    // @IsNotEmpty()
     type: string;
-    @IsNotEmpty()
+    // @IsNotEmpty()
     coordinates: number[] | [[Number]];
 }
