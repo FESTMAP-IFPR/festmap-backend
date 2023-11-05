@@ -3,9 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
-import { Mongoose } from 'mongoose';
 import { MongooseModule } from '@nestjs/mongoose';
 import { EventModule } from './event/event.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -15,8 +15,9 @@ import { EventModule } from './event/event.module';
     }),
     MongooseModule.forRoot(process.env.DB_URI),
     AuthModule,
-    EventModule],
+    EventModule,
+    UserModule],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
