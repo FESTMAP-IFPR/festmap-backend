@@ -5,13 +5,13 @@ import { Document } from 'mongoose';
 @Schema({
     timestamps: true
 })
-export class User extends Document {
+export class User {
 
     @Prop({ required: true })
     nome: string;
 
     @Prop({ required: false })
-    foto: string;
+    foto?: string;
 
     @Prop({ required: true })
     cpf: string;

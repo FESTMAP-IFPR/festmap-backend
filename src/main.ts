@@ -6,6 +6,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
   // mudar para funcionar no front-end
-  await app.listen(3000, '192.168.15.12');
+  await app.listen(3000, 'localhost');
 }
 bootstrap();

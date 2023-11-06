@@ -4,7 +4,7 @@ import { Type } from "class-transformer";
 export class UserDto {
     @IsNotEmpty()
     nome: string;
-    foto: string;
+    foto?: string;
     @IsNotEmpty()
     cpf: string;
     @IsNotEmpty()
