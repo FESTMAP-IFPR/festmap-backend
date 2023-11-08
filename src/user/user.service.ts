@@ -11,6 +11,16 @@ export class UserService {
         private userModel: Model<User>
     ) { }
 
+    generateRandomPassword() {
+        const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        let password = "";
+        for (let i = 0; i < 8; i++) {
+            const randomIndex = Math.floor(Math.random() * charset.length);
+            password += charset[randomIndex];
+        }
+        return password;
+    }
+
     async create(createUserDto: UserDto): Promise<User> {
         const createdUser = new this.userModel(createUserDto);
         return createdUser.save();
@@ -31,4 +41,24 @@ export class UserService {
     async delete(id: string): Promise<User> {
         return this.userModel.findByIdAndRemove(id);
     }
+
+    async findByEmail(email: string): Promise<User> {
+        return this.userModel.findOne({ email: email });
+    }
+
+    async forgotPassword(email: string, cpf: string): Promise<string> {
+        const usuario = await this.userModel.findOne({ email: email });
+        if (usuario) {
+            const nova_senha = this.generateRandomPassword();
+            usuario.senha = nova_senha;
+            await this.userModel.findByIdAndUpdate(usuario._id, usuario, { new: true });
+            if (usuario.cpf === cpf) {
+                return "Sua nova senha: " + nova_senha;
+            } else {
+                return "Email ou CPF não cadastrado";
+            }
+        } else {
+            return "Email não cadastrado";
+        }
+    }    
 }

@@ -14,10 +14,9 @@ export class UserController {
         return this.userService.create(createUserDto);
     }
 
-    @Get(`find-all`)
-    async findAll() {
-        console.log(`find-all`);
-        return this.userService.findAll();
+    @Post(`delete`)
+    async delete(id: string) {
+        return this.userService.delete(id);
     }
 
     @Post(`update`)
@@ -25,8 +24,23 @@ export class UserController {
         return this.userService.update(id, user);
     }
 
-    @Get(`find-one`)
+    @Get(`find-by-id`)
     async findOne(id: string) {
         return this.userService.findOne(id);
+    }
+
+    @Get(`find-by-email`)
+    async findByEmail(@Body('email') email: string) {
+        return this.userService.findByEmail(email);
+    }
+
+    @Get(`find-all`)
+    async findAll() {
+        return this.userService.findAll();
+    }
+
+    @Get(`forgot-password`)
+    async forgotPassword(@Body('email') email: string, @Body('cpf') cpf: string) {
+        return this.userService.forgotPassword(email, cpf);
     }
 }
