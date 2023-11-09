@@ -15,8 +15,24 @@ export class EventService {
         return createdEvent.save();
     }
 
+    async update(updateEventDto: EventDto): Promise<Event> {
+        const updatedEvent = await this.eventModel.findByIdAndUpdate(
+            { _id: updateEventDto._id },
+            updateEventDto,
+            { new: true }
+        );
+        return updatedEvent;
+    }
+
     async findAll(): Promise<Event[]> {
         return this.eventModel.find().exec();
     }
-    
+
+    async findById(id: string): Promise<Event> {
+        return this.eventModel.findById(id).exec();
+    }
+
+    async delete(id: string): Promise<Event> {
+        return this.eventModel.findByIdAndDelete(id).exec();
+    }
 }

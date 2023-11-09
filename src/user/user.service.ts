@@ -31,6 +31,7 @@ export class UserService {
     async create(createUserDto: UserDto): Promise<User> {
         const createdUser = new this.userModel(createUserDto);
         createdUser.senha = this.cripto(createdUser.senha);
+        createdUser.administrador = false;
         return createdUser.save();
     }
 
@@ -42,8 +43,8 @@ export class UserService {
         return this.userModel.findById(id);
     }
 
-    async update(id: string, user: UserDto): Promise<User> {
-        return this.userModel.findByIdAndUpdate(id, user, { new: true });
+    async update(user: UserDto): Promise<User> {
+        return this.userModel.findByIdAndUpdate(user._id, user, { new: true });
     }
 
     async delete(id: string): Promise<User> {
