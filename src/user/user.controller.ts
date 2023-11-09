@@ -20,8 +20,8 @@ export class UserController {
     }
 
     @Post(`update`)
-    async update(id: string, user: User) {
-        return this.userService.update(id, user);
+    async update(user: UserDto) {
+        return this.userService.update(user);
     }
 
     @Get(`find-by-id`)

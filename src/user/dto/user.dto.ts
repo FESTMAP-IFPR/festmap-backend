@@ -2,6 +2,7 @@ import { IsDate, IsNotEmpty } from "class-validator";
 import { Type } from "class-transformer";
 
 export class UserDto {
+    _id: string;
     @IsNotEmpty()
     nome: string;
     foto?: string;
@@ -17,5 +18,5 @@ export class UserDto {
     email: string;
     @IsNotEmpty()
     senha: string;
-
+    administrador: false;
 }
