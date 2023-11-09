@@ -9,14 +9,14 @@ export class AuthController {
         private authService: AuthService
     ) { }
 
-    @Post(`/signup`)
-    singUp(@Body() signUpDto: SignUpDto): Promise<{ token: string }> {
-        return this.authService.signUp(signUpDto);
-    }
+    // @Post(`/signup`)
+    // singUp(@Body() signUpDto: SignUpDto): Promise<{ token: string }> {
+    //     return this.authService.signUp(signUpDto);
+    // }
 
     // create a end point get login
-    @Get(`/login`)
-    login(@Body() loginDto: LoginDto): Promise<{ token: string}> {
-        return this.authService.login(loginDto);
-    }
+    // @Get(`/login`)
+    // login(@Body() loginDto: LoginDto): Promise<{ token: string}> {
+    //     return this.authService.login(loginDto);
+    // }
 }

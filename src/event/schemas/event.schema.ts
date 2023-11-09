@@ -8,7 +8,7 @@ import { Document, SchemaTypes, Types } from 'mongoose';
 })
 export class Event extends Document {
 
-    @Prop({ ref: 'User' , type: SchemaTypes.ObjectId })
+    @Prop({ ref: 'User', type: SchemaTypes.ObjectId })
     usuario_id: Types.ObjectId;
 
     @Prop({ required: true })
@@ -17,7 +17,7 @@ export class Event extends Document {
     @Prop({ required: true })
     descricao: string;
 
-    @Prop({ required: true})
+    @Prop({ required: true })
     classificacao: string;
 
     @Prop({ required: true })
@@ -32,7 +32,7 @@ export class Event extends Document {
     @Prop({ required: false })
     data_hora_fim: Date;
 
-    @Prop({ required: true})
+    @Prop({ required: true })
     localizacao: Location;
 
     @Prop({ required: false, type: Object })
@@ -47,5 +47,4 @@ export class Event extends Document {
     }
 }
 
-export const EventSchema  =  SchemaFactory.createForClass(Event);
- 
+export const EventSchema = SchemaFactory.createForClass(Event);
