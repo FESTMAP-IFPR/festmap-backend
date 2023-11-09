@@ -21,8 +21,16 @@ export class UserService {
         return password;
     }
 
+    cripto(senha: string) {
+        const crypto = require('crypto');
+        const hash = crypto.createHash('sha256');
+        hash.update(senha);
+        return hash.digest('hex');
+    }
+
     async create(createUserDto: UserDto): Promise<User> {
         const createdUser = new this.userModel(createUserDto);
+        createdUser.senha = this.cripto(createdUser.senha);
         return createdUser.save();
     }
 
@@ -51,6 +59,8 @@ export class UserService {
         if (usuario) {
             const nova_senha = this.generateRandomPassword();
             usuario.senha = nova_senha;
+            usuario.senha = this.cripto(usuario.senha);
+
             await this.userModel.findByIdAndUpdate(usuario._id, usuario, { new: true });
             if (usuario.cpf === cpf) {
                 return "Sua nova senha: " + nova_senha;
@@ -60,5 +70,5 @@ export class UserService {
         } else {
             return "Email não cadastrado";
         }
-    }    
+    }
 }
