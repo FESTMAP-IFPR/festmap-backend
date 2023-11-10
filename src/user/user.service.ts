@@ -64,7 +64,7 @@ export class UserService {
 
             await this.userModel.findByIdAndUpdate(usuario._id, usuario, { new: true });
             if (usuario.cpf === cpf) {
-                return "Sua nova senha: " + nova_senha;
+                return nova_senha;
             } else {
                 return "Email ou CPF não cadastrado";
             }
