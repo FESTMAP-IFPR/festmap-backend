@@ -43,4 +43,9 @@ export class UserController {
     async forgotPassword(@Body('email') email: string, @Body('cpf') cpf: string) {
         return this.userService.forgotPassword(email, cpf);
     }
+
+    @Post(`login`)
+    async login(@Body('email') email: string, @Body('senha') senha: string) {
+        return this.userService.login(email, senha);
+    }
 }
