@@ -72,4 +72,8 @@ export class UserService {
             return "Email não cadastrado";
         }
     }
+
+    async login(email: string, senha: string): Promise<User> {
+        return this.userModel.findOne({ email: email, senha: this.cripto(senha) });
+    }
 }
