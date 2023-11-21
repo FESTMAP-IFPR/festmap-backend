@@ -43,7 +43,8 @@ export class UserService {
         return this.userModel.findById(id);
     }
 
-    async update(user: UserDto): Promise<User> {
+    async update(user: any): Promise<User> {
+        user.senha = this.cripto(user.senha);
         return this.userModel.findByIdAndUpdate(user._id, user, { new: true });
     }
 

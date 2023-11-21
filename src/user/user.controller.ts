@@ -20,7 +20,7 @@ export class UserController {
     }
 
     @Post(`update`)
-    async update(user: UserDto) {
+    async update(@Body() user: any) {
         return this.userService.update(user);
     }
 
