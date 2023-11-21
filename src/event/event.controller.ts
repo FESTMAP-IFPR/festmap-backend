@@ -29,7 +29,7 @@ export class EventController {
         return this.eventService.findById(id);
     }
 
-    @Get(`delete`)
+    @Post(`delete`)
     async delete(@Body('id') id: string) {
         return this.eventService.delete(id);
     }

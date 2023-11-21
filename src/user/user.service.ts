@@ -55,6 +55,10 @@ export class UserService {
         return this.userModel.findByIdAndRemove(id);
     }
 
+    async deleteByEmail(email: string): Promise<User> {
+        return this.userModel.findOneAndRemove({ email: email });
+    }
+
     async findByEmail(email: string): Promise<User> {
         return this.userModel.findOne({ email: email });
     }

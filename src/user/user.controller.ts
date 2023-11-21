@@ -19,6 +19,11 @@ export class UserController {
         return this.userService.delete(id);
     }
 
+    @Post(`delete-by-email`)
+    async deleteByEmail(@Body('email') email: string) {
+        return this.userService.deleteByEmail(email);
+    }
+
     @Post(`update`)
     async update(@Body() user: any) {
         return this.userService.update(user);
