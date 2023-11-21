@@ -44,7 +44,10 @@ export class UserService {
     }
 
     async update(user: any): Promise<User> {
-        user.senha = this.cripto(user.senha);
+        if (user.senha == undefined || user.senha == null || user.senha == "")
+            delete user.senha;
+        else
+            user.senha = this.cripto(user.senha);
         return this.userModel.findByIdAndUpdate(user._id, user, { new: true });
     }
 
