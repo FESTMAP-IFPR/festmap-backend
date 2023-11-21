@@ -18,5 +18,6 @@ export class UserDto {
     email: string;
     @IsNotEmpty()
     senha: string;
+    photo_uri?: string;
     administrador: false;
 }

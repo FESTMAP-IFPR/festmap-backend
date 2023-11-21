@@ -29,6 +29,9 @@ export class User {
     senha: string;
 
     @Prop({ required: false })
+    photo_uri?: string;
+
+    @Prop({ required: false })
     administrador: boolean;
 }
 
