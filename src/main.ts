@@ -11,7 +11,9 @@ async function bootstrap() {
   app.use(bodyParser.json({ limit: '50mb' }));
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
   app.enableCors();
-  await app.listen(3000, "192.168.100.12");
+  await app.listen(3000);
+  // Carlos
+  // await app.listen(3000, " 192.168.70.237");
   if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => app.close());
