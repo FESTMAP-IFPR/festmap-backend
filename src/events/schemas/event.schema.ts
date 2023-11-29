@@ -8,11 +8,17 @@ import { Document, SchemaTypes, Types } from 'mongoose';
 })
 export class Event extends Document {
 
+    @Prop({ default: Types.ObjectId, type: SchemaTypes.ObjectId })
+    _id: Types.ObjectId;
+
     @Prop({ ref: 'User', type: SchemaTypes.ObjectId })
     usuario_id: Types.ObjectId;
 
     @Prop({ required: true })
     nome: string;
+
+    @Prop({ required: true })
+    imagem: string;
 
     @Prop({ required: true })
     descricao: string;
