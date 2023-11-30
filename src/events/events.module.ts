@@ -3,6 +3,7 @@ import { EventsService } from './events.service';
 import { EventsController } from './events.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { EventSchema } from './schemas/event.schema';
+import { EventsFindByController } from './events-find-by.controller';
 
 @Module({
   imports: [
@@ -10,7 +11,7 @@ import { EventSchema } from './schemas/event.schema';
       { name: 'Event', schema: EventSchema }
     ])
   ],
-  controllers: [EventsController],
+  controllers: [EventsController,EventsFindByController],
   providers: [EventsService]
 })
 export class EventsModule {}
