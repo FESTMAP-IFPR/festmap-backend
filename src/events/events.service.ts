@@ -14,6 +14,7 @@ export class EventsService {
   ) {}
 
   async create(createEventDto: CreateEventDto) {
+    console.log(createEventDto);
     const event = await new this.eventModel({
       ...createEventDto,
       _id: new Types.ObjectId(),
@@ -31,7 +32,7 @@ export class EventsService {
   }
 
   findByEventNameAndAddress(query:any) {
-
+    console.log(query);
     const {event_name, address_name , user_id } = query;
 
     const userMatch = {
@@ -65,14 +66,14 @@ export class EventsService {
     try {
       const pipeline = [];
 
-      if(!user_id) {
+      if(user_id) {
         pipeline.push({ $match: userMatch});
       }
 
-      if (event_name && !event_name.localeCompare("")) {
+      if (event_name && (event_name.length !== 0 )) {
         pipeline.push({ $match: eventMatch });
       }
-      if (address_name && !address_name.localeCompare("")) {
+      if (address_name && address_name.length  !== 0 ) {
         pipeline.push({ $match: addressMatch });
       }
       if (pipeline.length === 0) {
